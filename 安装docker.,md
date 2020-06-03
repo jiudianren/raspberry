@@ -1,3 +1,94 @@
 https://zhuanlan.zhihu.com/p/95786730
 
 
+
+
+安装教程参考的官网debian章节，有针对raspbian的讲解。
+
+在文中有这么一句话：
+
+Raspbian users cannot use this method!
+For Raspbian, installing using the repository is not yet supported. You must instead use the convenience script.
+也就是说raspbian用户不要使用apt来安装，而是使用它提供的脚本安装方式。
+
+
+
+安装docker（社区版本CE 19.03）
+# 下载安装脚本
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+由于我买了树莓派4B，安装了Buster系统，于是我看了一下这个链接的shell脚本，已经支持了buster安装（可以在脚本中搜索buster）
+
+# 执行脚本，使用阿里镜像
+$ sudo sh get-docker.sh  --mirror Aliyun
+
+
+启动docker
+$ sudo systemctl enable docker
+$ sudo systemctl start docker
+
+# 带sudo，docker需要root权限
+$ sudo docker version
+
+# 打印出来的版本信息
+Client: Docker Engine - Community
+ Version:           19.03.5
+ API version:       1.40
+ Go version:        go1.12.12
+ Git commit:        633a0ea
+ Built:             Wed Nov 13 07:37:22 2019
+ OS/Arch:           linux/arm
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.5
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.12
+  Git commit:       633a0ea
+  Built:            Wed Nov 13 07:31:17 2019
+  OS/Arch:          linux/arm
+  Experimental:     false
+ containerd:
+  Version:          1.2.10
+  GitCommit:        b34a5c8af56e510852c35414db4c1f4fa6172339
+ runc:
+  Version:          1.0.0-rc8+dev
+  GitCommit:        3e425f80a8c931f88e6d94a8c831b9d5aa481657
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+看docker构建版本是11月13号，还挺新！
+
+配置国内镜像
+$ mkdir -p /etc/docker
+$ sudo tee /etc/docker/daemon.json <<-'EOF'
+> {
+>   "registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]
+> } 
+> EOF
+重启docker生效
+
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+测试
+$  sudo docker run arm32v7/hello-world
+
+Unable to find image 'arm32v7/hello-world:latest' locally
+latest: Pulling from arm32v7/hello-world
+latest: Pulling from arm32v7/hello-world
+c1eda109e4da: Pull complete 
+Digest: sha256:07e995a680212a0a8a01e181b3fff128d44b8fe0c11426b638ec3cde7273f0a3
+Status: Downloaded newer image for arm32v7/hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+注： 树莓派是arm架构，arm平台不能使用x86镜像，查看 Raspbian 可使用镜像请访问 arm32v7。
+
+
+
+大功告成！
+
+总结
+linux上的编译环境一直是个老大难问题，为了使配置编译环境简单，也为了将编译环境做成镜像分享给别人，docker容器内编译是一个很好的方向！后面章节我会举列子。
+
+
