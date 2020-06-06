@@ -63,3 +63,46 @@ Stack trace:
 #4 /usr/share/php/openmediavault/rpc/rpc.inc(86): OMV\Rpc\ServiceAbstract->callMethod('mount', Array, Array)
 #5 /usr/sbin/omv-engined(537): OMV\Rpc\Rpc::call('FileSystemMgmt', 'mount', Array, Array, 1)
 #6 {main}
+
+
+帮助
+http://www.itboth.com/d/B3yiAz/windows-ubuntu
+
+
+ Error mounting: mount exited with exit code 13: $MFTMirr does not match $MFT (record 0). 
+Failed to mount '/dev/sdb2': Input/output error 
+NTFS is either inconsistent, or there is a hardware fault, or it's a 
+SoftRAID/FakeRAID hardware. In the first case run chkdsk /f on Windows 
+then reboot into Windows twice. The usage of the /f parameter is very 
+important! If the device is a SoftRAID/FakeRAID then first activate 
+it and mount a different device under the /dev/mapper/ directory, (e.g. 
+/dev/mapper/nvidia_eahaabcc1). Please see the 'dmraid' documentation 
+for more details. 
+今天在xp下插硬盘，有一个盘符死活没有内容，老报错，就去ubuntu下试试，一看就报了上面这个图片的错误
+
+网络一搜解决方法很多，为了以后防止这种情况再次发生，以备不测，将方法贴出来
+
+（1）进入windows下 win+R（或者直接找到‘运行’） -> cmd -> DOS命令行窗口 
+（2）查找移动硬盘在你windows下的卷名，我的是I:盘 
+（3）在DOS中键入, chkdsk I: /f 
+（4）安全卸载硬盘 
+（5）重新插入硬盘，测试能否成功传输文件 
+（6）在ubuntu上插入硬盘测试。 
+
+原因可能是因为你上次没有正常卸载硬盘导致的
+
+
+
+cmd-chkdsk/f 这条指令的作用是什么？
+
+硬盘扫描，用于检查硬盘错误。 
+
+后面加 /f 或 -f 表示检查时自动修复错误
+
+ /x 表式强行检查，如果硬盘在用则先卸下硬盘，在进行扫描。
+
+ /V 表示在fat/fat32 的文件格式上显示完整的文件夹路径和名称。
+
+ /I 用与NTFs索引项进行最小强度检查 
+
+/C 用于跳过文件夹结构循环检查
