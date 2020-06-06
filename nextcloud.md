@@ -42,3 +42,24 @@ https://blog.csdn.net/u010476430/article/details/89205028
   ),
 
 
+
+
+
+错误 #0:
+OMV\ExecException: Failed to execute command 'export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin; export LANG=C.UTF-8; mount -v --source '/dev/disk/by-label/Elements' 2>&1' with exit code '13': $MFTMirr does not match $MFT (record 0).
+Failed to mount '/dev/sda1': Input/output error
+NTFS is either inconsistent, or there is a hardware fault, or it's a
+SoftRAID/FakeRAID hardware. In the first case run chkdsk /f on Windows
+then reboot into Windows twice. The usage of the /f parameter is very
+important! If the device is a SoftRAID/FakeRAID then first activate
+it and mount a different device under the /dev/mapper/ directory, (e.g.
+/dev/mapper/nvidia_eahaabcc1). Please see the 'dmraid' documentation
+for more details. in /usr/share/php/openmediavault/system/process.inc:182
+Stack trace:
+#0 /usr/share/php/openmediavault/system/filesystem/filesystem.inc(738): OMV\System\Process->execute()
+#1 /usr/share/openmediavault/engined/rpc/filesystemmgmt.inc(930): OMV\System\Filesystem\Filesystem->mount()
+#2 [internal function]: Engined\Rpc\OMVRpcServiceFileSystemMgmt->mount(Array, Array)
+#3 /usr/share/php/openmediavault/rpc/serviceabstract.inc(123): call_user_func_array(Array, Array)
+#4 /usr/share/php/openmediavault/rpc/rpc.inc(86): OMV\Rpc\ServiceAbstract->callMethod('mount', Array, Array)
+#5 /usr/sbin/omv-engined(537): OMV\Rpc\Rpc::call('FileSystemMgmt', 'mount', Array, Array, 1)
+#6 {main}

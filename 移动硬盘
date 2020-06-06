@@ -1,0 +1,124 @@
+
+#  tail -f /var/log/syslog
+#  dmesg |tail -20
+
+
+启动终端会话（或转到命令行登录），插入驱动器，等待几秒钟，然后键入“ dmesg | tail -20”，然后查看显示的内容。
+
+这就是我在另一个Linux系统上得到的
+代码：全选
+
+rpdom@oz:~$ dmesg | tail -20    ----查usb 日志
+
+root@raspberrypi:/home/pi#
+root@raspberrypi:/home/pi# dmesg |tail -20
+[   29.932164] usb 1-1.1: device descriptor read/64, error -110
+[   45.292342] usb 1-1.1: device descriptor read/64, error -110
+[   45.412400] usb 1-1-port1: attempt power cycle
+[   46.082107] usb 1-1.1: new high-speed USB device number 5 using xhci_hcd
+[   47.854180] usb 1-1.1: Device not responding to setup address.
+[   49.844320] usb 1-1.1: Device not responding to setup address.
+[   50.062104] usb 1-1.1: device not accepting address 5, error -71
+[   50.162108] usb 1-1.1: new high-speed USB device number 6 using xhci_hcd
+[   51.932356] usb 1-1.1: Device not responding to setup address.
+[   53.924509] usb 1-1.1: Device not responding to setup address.
+[   54.142123] usb 1-1.1: device not accepting address 6, error -71
+[   54.142430] usb 1-1-port1: unable to enumerate USB device
+[   57.865873] fuse init (API version 7.27)
+[  150.013051] usb 1-1.1: new high-speed USB device number 7 using xhci_hcd
+[  155.133357] usb 1-1.1: device descriptor read/64, error -110
+[  170.493504] usb 1-1.1: device descriptor read/64, error -110
+[  170.713256] usb 1-1.1: new high-speed USB device number 8 using xhci_hcd
+[  175.853561] usb 1-1.1: device descriptor read/64, error -110
+[  182.503364] usb 1-1.1: new high-speed USB device number 9 using xhci_hcd
+[  187.613675] usb 1-1.1: device descriptor read/64, error -110
+
+
+ 244.147436] usb 2-1: new SuperSpeed Gen 1 USB device number 6 using xhci_hcd
+[  250.308170] usb 2-1: New USB device found, idVendor=1058, idProduct=1078, bcdDevice=10.65
+[  250.308185] usb 2-1: New USB device strings: Mfr=2, Product=3, SerialNumber=1
+[  250.308198] usb 2-1: Product: Elements 1078
+[  250.308211] usb 2-1: Manufacturer: Western Digital
+[  250.308223] usb 2-1: SerialNumber: 575852314143353445393248
+[  252.689391] usb-storage 2-1:1.0: USB Mass Storage device detected
+[  252.689844] scsi host0: usb-storage 2-1:1.0
+[  255.222742] scsi 0:0:0:0: Direct-Access     WD       Elements 1078    1065 PQ: 0 ANSI: 6
+[  255.223537] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[  258.121107] sd 0:0:0:0: [sda] Unit Not Ready
+[  258.121126] sd 0:0:0:0: [sda] Sense Key : 0x4 [current]
+[  258.121142] sd 0:0:0:0: [sda] ASC=0x44 <<vendor>>ASCQ=0x81
+[  258.625106] sd 0:0:0:0: [sda] 2930210816 512-byte logical blocks: (1.50 TB/1.36 TiB)
+[  258.818297] sd 0:0:0:0: [sda] Write Protect is off
+[  258.818313] sd 0:0:0:0: [sda] Mode Sense: 53 00 10 08
+[  259.062906] sd 0:0:0:0: [sda] No Caching mode page found
+[  259.062922] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[  261.220138] sd 0:0:0:0: [sda] Spinning up disk...
+[  262.315605] .not responding...
+root@raspberrypi:/home/pi#
+
+
+
+
+
+
+
+
+
+
+
+root@raspberrypi:/home/pi# dmesg |tail -20
+[  657.959007] usb 2-1: New USB device found, idVendor=1058, idProduct=1078, bcdDevice=10.65
+[  657.959022] usb 2-1: New USB device strings: Mfr=2, Product=3, SerialNumber=1
+[  657.959035] usb 2-1: Product: Elements 1078
+[  657.959047] usb 2-1: Manufacturer: Western Digital
+[  657.959059] usb 2-1: SerialNumber: 575852314143353445393248
+[  657.961398] usb-storage 2-1:1.0: USB Mass Storage device detected
+[  657.961952] scsi host0: usb-storage 2-1:1.0
+[  660.575165] scsi 0:0:0:0: Direct-Access     WD       Elements 1078    1065 PQ: 0 ANSI: 6
+[  660.575941] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[  665.257463] sd 0:0:0:0: [sda] Unit Not Ready
+[  665.257482] sd 0:0:0:0: [sda] Sense Key : 0x4 [current]
+[  665.257497] sd 0:0:0:0: [sda] ASC=0x44 <<vendor>>ASCQ=0x81
+[  666.034784] sd 0:0:0:0: [sda] 2930210816 512-byte logical blocks: (1.50 TB/1.36 TiB)
+[  667.553358] sd 0:0:0:0: [sda] Write Protect is off
+[  667.553375] sd 0:0:0:0: [sda] Mode Sense: 53 00 10 08
+[  668.384350] sd 0:0:0:0: [sda] No Caching mode page found
+[  668.384366] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[  673.127793] sd 0:0:0:0: [sda] Unit Not Ready
+[  673.127811] sd 0:0:0:0: [sda] Sense Key : 0x4 [current]
+[  673.127826] sd 0:0:0:0: [sda] ASC=0x44 <<vendor>>ASCQ=0x81
+root@raspberrypi:/home/pi#
+
+
+Code: Select all
+
+tail -f /var/log/syslog
+
+
+
+
+
+
+May 31 13:57:28 raspberrypi kernel: [  134.760744] usb 2-1: new SuperSpeed Gen 1 USB device number 3 using xhci_hcd
+May 31 13:57:28 raspberrypi kernel: [  134.791527] usb 2-1: New USB device found, idVendor=1058, idProduct=1078, bcdDevice=10.65
+May 31 13:57:28 raspberrypi kernel: [  134.791542] usb 2-1: New USB device strings: Mfr=2, Product=3, SerialNumber=1
+May 31 13:57:28 raspberrypi kernel: [  134.791555] usb 2-1: Product: Elements 1078
+May 31 13:57:28 raspberrypi kernel: [  134.791567] usb 2-1: Manufacturer: Western Digital
+May 31 13:57:28 raspberrypi kernel: [  134.791579] usb 2-1: SerialNumber: 575852314143353445393248
+May 31 13:57:28 raspberrypi kernel: [  134.793912] usb-storage 2-1:1.0: USB Mass Storage device detected
+May 31 13:57:28 raspberrypi kernel: [  134.794530] scsi host0: usb-storage 2-1:1.0
+May 31 13:57:28 raspberrypi mtp-probe: checking bus 2, device 3: "/sys/devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-1"
+May 31 13:57:28 raspberrypi mtp-probe: bus: 2, device: 3 was not an MTP device
+May 31 13:57:28 raspberrypi mtp-probe: checking bus 2, device 3: "/sys/devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-1"
+May 31 13:57:28 raspberrypi mtp-probe: bus: 2, device: 3 was not an MTP device
+May 31 13:57:29 raspberrypi kernel: [  135.831034] scsi 0:0:0:0: Direct-Access     WD       Elements 1078    1065 PQ: 0 ANSI: 6
+May 31 13:57:29 raspberrypi kernel: [  135.831967] sd 0:0:0:0: Attached scsi generic sg0 type 0
+May 31 13:57:29 raspberrypi kernel: [  135.833586] sd 0:0:0:0: [sda] Spinning up disk...
+May 31 13:57:35 raspberrypi kernel: [  136.880309] ......ready
+May 31 13:57:35 raspberrypi kernel: [  142.072116] sd 0:0:0:0: [sda] 2930210816 512-byte logical blocks: (1.50 TB/1.36 TiB)
+May 31 13:57:35 raspberrypi kernel: [  142.073053] sd 0:0:0:0: [sda] Write Protect is off
+May 31 13:57:35 raspberrypi kernel: [  142.073069] sd 0:0:0:0: [sda] Mode Sense: 53 00 10 08
+May 31 13:57:35 raspberrypi kernel: [  142.074309] sd 0:0:0:0: [sda] No Caching mode page found
+May 31 13:57:35 raspberrypi kernel: [  142.074325] sd 0:0:0:0: [sda] Assuming drive cache: write through
+May 31 13:57:36 raspberrypi kernel: [  142.282236]  sda: sda1
+May 31 13:57:36 raspberrypi kernel: [  142.285718] sd 0:0:0:0: [sda] Attached SCSI disk

@@ -82,7 +82,7 @@ vnc:参考这个：
 
 https://www.jianshu.com/p/3041f11dcadb
 配置wifi和ssh参考这个：
-http://shumeipai.nxez.com/2017/09/13/raspberry-pi-network-configuration-before-boot.html
+
 
 
 

@@ -145,3 +145,32 @@ PuTTY 远程：   对硬盘分区  fdisk /dev/sda
 
 文章标题：树莓派网络存储（NAS） OpenMediaVault 安装配置 - 树莓派实验室
 固定链接：https://shumeipai.nxez.com/2018/01/10/raspberry-pi-nas-openmediavault-installation.html
+
+
+
+
+
+
+
+
+
+Failed to execute command 
+
+'export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin;
+ export LANG=C.UTF-8; df -PT '/media/root/Elements' 2>&1' with exit code '1':
+
+ df: /media/root/Elements: Transport endpoint is not connected
+ 
+ raspberry
+
+ https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/openmediavault-omvextrasorg_latest_all5.deb
+
+
+ https://forum.openmediavault.org/index.php?thread/5549-omv-extras-org-plugin/
+
+ https://forum.openmediavault.org/index.php?thread/5549-omv-extras-org-plugin/
+
+
+ https://forum.openmediavault.org/index.php?thread/15015-uninstall-omvextrasorg-3-x/
+
+ 
